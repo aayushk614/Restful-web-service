@@ -72,18 +72,18 @@ public class UserController {
 			})
 	public ResponseEntity<UserRest> createUser(@RequestBody UserDetailsRequestModel userDetails)
 	{
-			UserRest ob2= new UserRest();
-			ob2.setEmail(userDetails.getEmail());
-			ob2.setFirstName(userDetails.getFirstName());
-			ob2.setLastName(userDetails.getLastName());
+			UserRest returnValue= new UserRest();
+			returnValue.setEmail(userDetails.getEmail());
+			returnValue.setFirstName(userDetails.getFirstName());
+			returnValue.setLastName(userDetails.getLastName());
 			
 			String userId = UUID.randomUUID().toString();
-			ob2.setUserId(userId);
+			returnValue.setUserId(userId);
 			
 			if(users==null) users = new HashMap<>();
-			users.put(userId, ob2);
+			users.put(userId, returnValue);
 			
-			return new ResponseEntity<UserRest>(ob2, HttpStatus.OK);
+			return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
 	}
 	
 	
